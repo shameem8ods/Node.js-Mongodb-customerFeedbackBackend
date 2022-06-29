@@ -13,32 +13,46 @@ app.listen(PORT, () => {
 });
 
 app.get('/',(req,res)=>{
+    if(req.body.key == 'amer874534778ont-76544'){
     survey.find({}, function (err, result) {
         res.send(result);
     });
+    } else {
+        res.status(404).json({
+            message: 'Acces denied',
+        });
+    }
+    
     
 })
 
 
 app.post('/', (req, res) => {
-    var surveyAdd = new survey({
-        name : req.body.name,
-        mobile: req.body.mobile,
-        counterStaffRating: req.body.staff,
-        visitAgainRating: req.body.visitAgain,
-        overollSatisfaction: req.body.overall,
-        additionalComment: req.body.comment,
+    if(req.body.key == 'amer874534778ont-76544'){
+        var surveyAdd = new survey({
+            name : req.body.name,
+            mobile: req.body.mobile,
+            counterStaffRating: req.body.staff,
+            visitAgainRating: req.body.visitAgain,
+            overollSatisfaction: req.body.overall,
+            additionalComment: req.body.comment,
+            });
+            surveyAdd.save((err, survey) => {
+                if (err) {
+                    res.status(500).json({
+                        err
+                    });
+                } else {
+                    res.status(200).json({
+                        message: 'new survey created',
+                        survey
+                    });
+                }
+            });
+    } else {
+        res.status(404).json({
+            message: 'Access denied',
         });
-        surveyAdd.save((err, survey) => {
-            if (err) {
-                res.status(500).json({
-                    err
-                });
-            } else {
-                res.status(200).json({
-                    message: 'new survey created',
-                    survey
-                });
-            }
-        });
+    }
+    
     });
