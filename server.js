@@ -13,7 +13,7 @@ app.listen(PORT, () => {
     console.log('Server listening on ' + PORT);
 });
 
-app.get('/',(req,res)=>{
+app.post('/',(req,res)=>{
     if(req.body.key == process.env.KEY){
     survey.find({}, function (err, result) {
         res.send(result);
