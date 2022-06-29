@@ -1,7 +1,8 @@
 
-
+require('dotenv').config()
+const pass = process.env.MONGO_PASSWORD
 const mongoose = require('mongoose');
-const dbURL = `mongodb+srv://shameem8ods:shameem8ods@amer.qwhcs6h.mongodb.net/?retryWrites=true&w=majority`
+const dbURL = `mongodb+srv://shameem8ods:${pass}@amer.qwhcs6h.mongodb.net/?retryWrites=true&w=majority`
 mongoose.connect(dbURL, { dbName: 'amer' }, (err) => {
     if (!err) {
         console.log('Connected to database');

@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -13,7 +14,7 @@ app.listen(PORT, () => {
 });
 
 app.get('/',(req,res)=>{
-    if(req.body.key == 'amer874534778ont-76544'){
+    if(req.body.key == process.env.KEY){
     survey.find({}, function (err, result) {
         res.send(result);
     });
@@ -28,7 +29,7 @@ app.get('/',(req,res)=>{
 
 
 app.post('/', (req, res) => {
-    if(req.body.key == 'amer874534778ont-76544'){
+    if(req.body.key == process.env.KEY){
         var surveyAdd = new survey({
             name : req.body.name,
             mobile: req.body.mobile,
