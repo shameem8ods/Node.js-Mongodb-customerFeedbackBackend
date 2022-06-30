@@ -15,7 +15,7 @@ const surveyShema = new mongoose.Schema({
     name : String,
     mobile: Number,
     staff: Number,
-    visistAgain: Number,
+    visitAgain: Number,
     overall: String,
     comment: String,
 });

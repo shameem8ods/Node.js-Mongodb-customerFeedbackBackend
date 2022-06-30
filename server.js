@@ -34,7 +34,7 @@ app.post('/newSurvey', (req, res) => {
             name : req.body.name,
             mobile: req.body.mobile,
             staff: req.body.staff,
-            visistAgain: req.body.visitAgain,
+            visitAgain: req.body.visitAgain,
             overall: req.body.overall,
             comment: req.body.comment,
             });
