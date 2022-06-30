@@ -28,15 +28,15 @@ app.post('/',(req,res)=>{
 })
 
 
-app.post('/', (req, res) => {
+app.post('/newSurvey', (req, res) => {
     if(req.body.key == process.env.KEY){
         var surveyAdd = new survey({
             name : req.body.name,
             mobile: req.body.mobile,
-            counterStaffRating: req.body.staff,
-            visitAgainRating: req.body.visitAgain,
-            overollSatisfaction: req.body.overall,
-            additionalComment: req.body.comment,
+            staff: req.body.staff,
+            visistAgain: req.body.visitAgain,
+            overall: req.body.overall,
+            comment: req.body.comment,
             });
             surveyAdd.save((err, survey) => {
                 if (err) {

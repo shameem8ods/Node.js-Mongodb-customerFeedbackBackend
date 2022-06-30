@@ -14,9 +14,9 @@ mongoose.connect(dbURL, { dbName: 'amer' }, (err) => {
 const surveyShema = new mongoose.Schema({
     name : String,
     mobile: Number,
-    counterStaffRating: Number,
-    visitAgainRating: Number,
-    overollSatisfaction: String,
-    additionalComment: String,
+    staff: Number,
+    visistAgain: Number,
+    overall: String,
+    comment: String,
 });
 module.exports = mongoose.model("survey", surveyShema);
